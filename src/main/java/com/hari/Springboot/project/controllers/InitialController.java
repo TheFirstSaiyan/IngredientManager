@@ -13,6 +13,6 @@ public class InitialController {
     @GetMapping(value = "/")
     public String initialMethod()
     {
-        return "You got thissss!";
+        return "You got thisssss!";
     }
 }
