@@ -45,8 +45,8 @@ public class FoodItem {
                 '}';
     }
 
-    public FoodItem(Long foodId) {
-        this.foodId = foodId;
+    public FoodItem() {
+
     }
 
     public FoodItem(Long foodId, String foodName, String category, String ingredients) {
