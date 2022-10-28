@@ -30,4 +30,16 @@ public class IngredientController {
     {
         return ingredientService.getFoodItemById(id);
     }
+
+    @DeleteMapping(value = "/foodItemById/{id}")
+    public String deleteFoodById(@PathVariable("id") Long id)
+    {
+        return ingredientService.deleteFoodById(id);
+    }
+
+    @PutMapping(value = "/foodItemById/{id}")
+    public FoodItem updateFoodItem(@PathVariable("id") Long id, @RequestBody FoodItem foodItem)
+    {
+        return ingredientService.updateFoodItem(id,foodItem);
+    }
 }

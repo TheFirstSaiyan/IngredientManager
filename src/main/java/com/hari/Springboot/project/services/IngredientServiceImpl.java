@@ -25,4 +25,24 @@ public class IngredientServiceImpl implements IngredientService{
     public FoodItem getFoodItemById(Long id) {
         return ingredientRepository.findById(id).get();
     }
+
+    @Override
+    public String deleteFoodById(Long id) {
+        ingredientRepository.deleteById(id);
+        return "Food Item with id = " + id + " deleted successfully!";
+    }
+
+    @Override
+    public FoodItem updateFoodItem(Long id, FoodItem foodItem) {
+        FoodItem existingFoodItem = ingredientRepository.findById(id).get();
+        if(foodItem.getFoodName() != null || !foodItem.getFoodName().equals(""))
+            existingFoodItem.setFoodName(foodItem.getFoodName());
+        if(foodItem.getCategory() != null || !foodItem.getCategory().equals(""))
+            existingFoodItem.setCategory(foodItem.getCategory());
+        if(foodItem.getIngredients() != null || !foodItem.getIngredients().equals(""))
+            existingFoodItem.setIngredients(foodItem.getIngredients());
+
+        return ingredientRepository.save(foodItem);
+
+    }
 }

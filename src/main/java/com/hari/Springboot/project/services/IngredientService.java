@@ -6,9 +6,15 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 public interface IngredientService {
+
+
     public FoodItem saveFood(FoodItem foodItem);
 
     public List<FoodItem> getFoodList();
 
     public FoodItem getFoodItemById(Long id);
+
+    public String deleteFoodById(Long id);
+
+    public FoodItem updateFoodItem(Long id, FoodItem foodItem);
 }
