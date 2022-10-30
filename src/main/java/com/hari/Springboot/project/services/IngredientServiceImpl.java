@@ -42,7 +42,17 @@ public class IngredientServiceImpl implements IngredientService{
         if(foodItem.getIngredients() != null || !foodItem.getIngredients().equals(""))
             existingFoodItem.setIngredients(foodItem.getIngredients());
 
-        return ingredientRepository.save(foodItem);
+        return ingredientRepository.save(existingFoodItem);
 
+    }
+
+    @Override
+    public FoodItem findFoodItemByName(String name) {
+        return ingredientRepository.findByFoodName(name);
+    }
+
+    @Override
+    public List<FoodItem> findFoodItemsByName(String name) {
+        return ingredientRepository.userDefinedSearch(name);
     }
 }

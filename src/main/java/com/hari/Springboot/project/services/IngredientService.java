@@ -17,4 +17,8 @@ public interface IngredientService {
     public String deleteFoodById(Long id);
 
     public FoodItem updateFoodItem(Long id, FoodItem foodItem);
+
+    public FoodItem findFoodItemByName(String name);
+
+    public List<FoodItem> findFoodItemsByName(String name);
 }

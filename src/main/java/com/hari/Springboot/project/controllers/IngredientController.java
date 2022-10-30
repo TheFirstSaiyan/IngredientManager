@@ -3,6 +3,7 @@ package com.hari.Springboot.project.controllers;
 import com.hari.Springboot.project.models.FoodItem;
 import com.hari.Springboot.project.services.IngredientService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -14,7 +15,7 @@ public class IngredientController {
     IngredientService ingredientService;
 
     @PostMapping(value = "/food")
-    public FoodItem saveFood(@RequestBody FoodItem foodItem)
+    public FoodItem saveFood(@Validated @RequestBody FoodItem foodItem)
     {
         return ingredientService.saveFood(foodItem);
     }
@@ -42,4 +43,17 @@ public class IngredientController {
     {
         return ingredientService.updateFoodItem(id,foodItem);
     }
+
+    @GetMapping(value = "/foodItemByName/{name}")
+    public FoodItem findFoodItemByName(@PathVariable("name") String name)
+    {
+        return ingredientService.findFoodItemByName(name);
+    }
+
+    @GetMapping(value = "/foodItemsByName/{name}")
+    public List<FoodItem> findFoodItemsByName(@PathVariable("name") String name)
+    {
+        return ingredientService.findFoodItemsByName(name);
+    }
+
 }

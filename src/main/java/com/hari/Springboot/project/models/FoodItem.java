@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotBlank;
 
 @Entity
 public class FoodItem {
@@ -11,6 +12,7 @@ public class FoodItem {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long foodId;
+    @NotBlank(message = "please enter food name")
     private String foodName;
     private String category;
     private String ingredients;
