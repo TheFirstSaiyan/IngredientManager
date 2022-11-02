@@ -2,6 +2,8 @@ package com.hari.Springboot.project.controllers;
 
 import com.hari.Springboot.project.models.FoodItem;
 import com.hari.Springboot.project.services.IngredientService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -11,12 +13,14 @@ import java.util.List;
 @RestController
 public class IngredientController {
 
+    private final Logger LOGGER = LoggerFactory.getLogger(IngredientController.class);
     @Autowired
     IngredientService ingredientService;
 
     @PostMapping(value = "/food")
     public FoodItem saveFood(@Validated @RequestBody FoodItem foodItem)
     {
+        LOGGER.info("inside saveFood API");
         return ingredientService.saveFood(foodItem);
     }
 
